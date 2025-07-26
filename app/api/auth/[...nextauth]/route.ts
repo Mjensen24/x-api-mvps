@@ -12,25 +12,6 @@ const handler = NextAuth({
   session: {
     strategy: "jwt",
   },
-  callbacks: {
-    async jwt({ token, account, profile }) {
-      if (account) {
-        token.accessToken = account.access_token
-        token.refreshToken = account.refresh_token
-        token.twitterId = profile?.data?.id
-        token.username = profile?.data?.username
-      }
-      return token
-    },
-    async session({ session, token }) {
-      session.accessToken = token.accessToken
-      session.refreshToken = token.refreshToken
-      session.twitterId = token.twitterId
-      session.username = token.username
-      return session
-    },
-  },
-  debug: process.env.NODE_ENV === "development",
 })
 
 export { handler as GET, handler as POST }
