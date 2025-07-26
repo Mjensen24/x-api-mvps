@@ -1,0 +1,6 @@
+[build]
+  command = "npm run build"    # What command to run
+  publish = ".next"            # Which folder to deploy
+
+[build.environment]
+  NODE_ENV = "production"      # Environment variables
